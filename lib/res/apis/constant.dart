@@ -27,6 +27,11 @@ final spinKitBlackSmall = SpinKitThreeBounce(
   size: 10.0,
 );
 
+final spinkitBlue = SpinKitThreeBounce(
+  color: defaultBlue,
+  size: 15.0,
+);
+
 ///FToast
 void showToast(BuildContext context, String text) {
   ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);

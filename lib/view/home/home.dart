@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
 //            },
 //          ),
           title: Text(
-            '$name',
+            'Philial',
             style: TextStyle(
                 fontSize: 2.3 * textm,
                 color: Colors.white,

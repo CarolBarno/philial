@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
 import 'package:philial/res/apis/profile_data.dart';
-import 'package:philial/view/home/Transactions.dart';
+import 'package:philial/view/home/transactions.dart';
 import 'package:philial/view/home/activate_package.dart';
 import 'package:philial/view/home/profile.dart';
 import 'package:philial/view/home/referrals.dart';
@@ -173,7 +173,7 @@ Widget referrals(BuildContext context) {
         ],
       ),
       onTap: () {
-        Navigator.push(context, PageTransition(child: Referrals(), type:PageTransitionType.rightToLeft));
+        Navigator.push(context, PageTransition(child: MyReferrals(), type:PageTransitionType.rightToLeft));
       });
 }
 
