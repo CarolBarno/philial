@@ -86,6 +86,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Number of Referrals',
@@ -126,9 +127,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
@@ -146,6 +145,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Account Balance',
@@ -186,9 +186,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
@@ -206,6 +204,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Next Due Payment Date',
@@ -247,9 +246,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
@@ -267,6 +264,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Next Due Payment Amount',
@@ -307,9 +305,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
@@ -327,6 +323,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Active Package',

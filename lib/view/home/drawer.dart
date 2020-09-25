@@ -81,8 +81,8 @@ Widget profile(BuildContext context) {
       title: Row(
         children: <Widget>[
           Icon(
-            Icons.edit,
-            size: size.setWidth(30),
+            Icons.account_circle,
+            size: size.setWidth(50),
           ),
           SizedBox(
             width: size.setWidth(16),
@@ -106,8 +106,8 @@ Widget activatePackage(BuildContext context) {
       title: Row(
         children: <Widget>[
           Icon(
-            Icons.edit,
-            size: size.setWidth(30),
+            Icons.receipt,
+            size: size.setWidth(50),
           ),
           SizedBox(
             width: size.setWidth(16),
@@ -132,7 +132,7 @@ Widget logout(BuildContext context) {
         children: <Widget>[
           Icon(
             Icons.exit_to_app,
-            size: size.setWidth(30),
+            size: size.setWidth(50),
           ),
           SizedBox(
             width: size.setWidth(16),
@@ -156,8 +156,8 @@ Widget referrals(BuildContext context) {
       title: Row(
         children: <Widget>[
           Icon(
-            Icons.credit_card,
-            size: size.setWidth(30),
+            Icons.group,
+            size: size.setWidth(50),
           ),
           SizedBox(
             width: size.setWidth(16),
@@ -182,7 +182,7 @@ Widget transactions(BuildContext context) {
         children: <Widget>[
           Icon(
             Icons.credit_card,
-            size: size.setWidth(30),
+            size: size.setWidth(50),
           ),
           SizedBox(
             width: size.setWidth(16),
