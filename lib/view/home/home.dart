@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -85,6 +85,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Number of Referrals',
@@ -125,14 +126,12 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -145,6 +144,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Account Balance',
@@ -185,14 +185,12 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -205,6 +203,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Next Due Payment Date',
@@ -245,14 +244,12 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -265,6 +262,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Next Due Payment Amount',
@@ -305,14 +303,12 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2 * heightm,
-                ),
+
                 Container(
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -325,6 +321,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Active Package',
