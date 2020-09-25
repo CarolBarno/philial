@@ -5,6 +5,7 @@ import 'package:philial/res/apis/home_data_api.dart';
 import 'package:philial/res/apis/profile_data.dart';
 import 'package:philial/view/home/drawer.dart';
 import 'package:philial/view/home/profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,6 +13,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  getProfileData() async {
+    try {
+      localStorage = await SharedPreferences.getInstance();
+
+      setState(() {
+        name = localStorage.getString('name');
+        phone = localStorage.getString('phone');
+        email = localStorage.getString('email');
+      });
+
+    } catch (e) {
+    }
+  }
 
   @override
   void initState() {
