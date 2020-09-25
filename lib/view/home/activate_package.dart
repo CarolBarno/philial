@@ -127,7 +127,8 @@ class _ActivatePackageState extends State<ActivatePackage> {
               data[index].minOperatingBal,
               data[index].minOperatingPeriod,
               data[index].monthlySubscription,
-              data[index].packageId);
+              data[index].packageId,
+          _isLoading);
         });
   }
 
@@ -142,6 +143,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
     String minOperatingPeriod,
     String monthlySubscription,
     String packageId,
+      bool _isLoading
   ) {
     ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
     var size = ScreenUtil();
@@ -317,8 +319,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
                     padding: EdgeInsets.fromLTRB(
                         3 * widthm, 3 * widthm, 3 * widthm, 3 * widthm),
                     onPressed: () async {
-                      print('>>>>>>>>>>>> $packageId');
-                      await activatePackage(packageId);
+                      await activatePackage(packageId, _isLoading);
                     },
                     child: _isLoading
                         ? spinKit
@@ -339,11 +340,13 @@ class _ActivatePackageState extends State<ActivatePackage> {
     );
   }
 
-  activatePackage(String packageId) async {
+  activatePackage(String packageId, bool isLoading) async {
+    print('$isLoading');
     setState(() {
-      _isLoading = true;
+      isLoading = true;
     });
 print('pppppppppppppp  $packageId');
+    print('$isLoading');
     var data = {"package_id": packageId};
 
     print(' data $data');
@@ -366,7 +369,7 @@ print('pppppppppppppp  $packageId');
     }
 
     setState(() {
-      _isLoading = false;
+      isLoading = false;
     });
   }
 }
