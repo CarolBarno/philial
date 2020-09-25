@@ -335,6 +335,7 @@ class _HomeState extends State<Home> {
                                     SizedBox(
                                       height: 2.5 * heightm,
                                     ),
+                                    activePackage == null ? Text('') :
                                     Text(
                                       '$activePackage',
                                       style: TextStyle(

@@ -7,6 +7,7 @@ import 'package:philial/view/home/transactions.dart';
 import 'package:philial/view/home/activate_package.dart';
 import 'package:philial/view/home/profile.dart';
 import 'package:philial/view/home/referrals.dart';
+import 'package:philial/view/home/withdraw.dart';
 import 'package:philial/view/login_register/login.dart';
 
 drawer(BuildContext context) {
@@ -21,6 +22,7 @@ drawer(BuildContext context) {
           buildDrawerHeader(context),
           profile(context),
           activatePackage(context),
+          makeWithdrawal(context),
           transactions(context),
           referrals(context),
           logout(context),
@@ -120,6 +122,31 @@ Widget activatePackage(BuildContext context) {
       ),
       onTap: () {
         Navigator.push(context, PageTransition(child: ActivatePackage(), type: PageTransitionType.rightToLeft));
+      });
+}
+
+Widget makeWithdrawal(BuildContext context) {
+  ScreenUtil.init(context, width: 720, height: 1500, allowFontScaling: false);
+  var size = ScreenUtil();
+  return ListTile(
+      dense: true,
+      title: Row(
+        children: <Widget>[
+          Icon(
+            Icons.receipt,
+            size: size.setWidth(50),
+          ),
+          SizedBox(
+            width: size.setWidth(16),
+          ),
+          Text(
+            'Make Withdrawal',
+            style: TextStyle(fontSize: size.setSp(24)),
+          ),
+        ],
+      ),
+      onTap: () {
+        Navigator.push(context, PageTransition(child: Withdraw(), type: PageTransitionType.rightToLeft));
       });
 }
 
