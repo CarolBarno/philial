@@ -41,8 +41,8 @@ void showToast(BuildContext context, String text) {
     toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIosWeb: 1,
-    backgroundColor: Colors.blue,
-    textColor: Colors.black,
+    backgroundColor: Colors.red[900],
+    textColor: Colors.white,
     fontSize: size.setSp(24),
   );
 }

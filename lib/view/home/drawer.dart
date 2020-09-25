@@ -61,7 +61,7 @@ DrawerHeader buildDrawerHeader(BuildContext context) {
               fontWeight: FontWeight.w800),
         ),
         Text(
-          '+$phone',
+          '$phone',
           style: TextStyle(
             color: defaultBlue,
             fontFamily: 'OpenSans',
