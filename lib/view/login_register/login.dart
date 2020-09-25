@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
+import 'package:philial/res/apis/home_data_api.dart';
 import 'package:philial/res/apis/register_api.dart';
 import 'package:philial/view/home/home.dart';
 import 'package:philial/view/login_register/register.dart';
@@ -316,6 +317,8 @@ class _LoginState extends State<Login> {
         localStorage.setString('name', profile['full_name']);
         localStorage.setString('phone', profile['phone_number']);
         localStorage.setString('email', profile['email']);
+
+        await getHomeData();
 
         Navigator.push(
             context,

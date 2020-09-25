@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:philial/res/apis/profile_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final String ipAddress = 'https://philial.org:8081/';
+//final String ipAddress = 'https://philial.org:8081/';
+final String ipAddress = 'https://192.168.0.21:8081/';
 final String URL = '${ipAddress}api/';
 var accesstoken, refreshToken;
 SharedPreferences localStorage;

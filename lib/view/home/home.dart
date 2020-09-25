@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
+import 'package:philial/res/apis/home_data_api.dart';
 import 'package:philial/res/apis/profile_data.dart';
 import 'package:philial/view/home/drawer.dart';
 import 'package:philial/view/home/profile.dart';
@@ -72,7 +73,7 @@ class _HomeState extends State<Home> {
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -97,7 +98,7 @@ class _HomeState extends State<Home> {
                                       height: 2.5 * heightm,
                                     ),
                                     Text(
-                                      '21',
+                                      '$numberOfReferrals',
                                       style: TextStyle(
                                           fontSize: 2.5 * textm,
                                           color: Colors.black87,
@@ -132,7 +133,7 @@ class _HomeState extends State<Home> {
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -157,7 +158,7 @@ class _HomeState extends State<Home> {
                                       height: 2.5 * heightm,
                                     ),
                                     Text(
-                                      'Ksh. 44,600',
+                                      'Ksh. $accountBalance',
                                       style: TextStyle(
                                           fontSize: 2.5 * textm,
                                           color: Colors.black87,
@@ -192,7 +193,7 @@ class _HomeState extends State<Home> {
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -216,8 +217,9 @@ class _HomeState extends State<Home> {
                                     SizedBox(
                                       height: 2.5 * heightm,
                                     ),
+                                    nextRepaymentDate == null ? Text(''):
                                     Text(
-                                      '2020-09-22',
+                                      '$nextRepaymentDate',
                                       style: TextStyle(
                                           fontSize: 2.5 * textm,
                                           color: Colors.black87,
@@ -252,7 +254,7 @@ class _HomeState extends State<Home> {
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -277,7 +279,7 @@ class _HomeState extends State<Home> {
                                       height: 2.5 * heightm,
                                     ),
                                     Text(
-                                      'Ksh. 3,000',
+                                      'Ksh. $nextDueAmount',
                                       style: TextStyle(
                                           fontSize: 2.5 * textm,
                                           color: Colors.black87,
@@ -312,7 +314,7 @@ class _HomeState extends State<Home> {
                   height: 16 * heightm,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -337,7 +339,7 @@ class _HomeState extends State<Home> {
                                       height: 2.5 * heightm,
                                     ),
                                     Text(
-                                      'Silver',
+                                      '$activePackage',
                                       style: TextStyle(
                                           fontSize: 2.5 * textm,
                                           color: Colors.black87,

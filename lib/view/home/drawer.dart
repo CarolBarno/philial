@@ -144,11 +144,7 @@ Widget logout(BuildContext context) {
         ],
       ),
       onTap: () async {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Login()),
-            ModalRoute.withName("/home"));
-        // Navigator.popAndPushNamed(context, '/login');
+            Navigator.popUntil(context, ModalRoute.withName('/login'));
       });
 }
 
