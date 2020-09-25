@@ -51,7 +51,7 @@ class _LoginState extends State<Login> {
                     decoration: BoxDecoration(
                       // color: Colors.grey[200],
                       borderRadius:
-                          BorderRadius.all(Radius.circular(3 * widthm)),
+                          BorderRadius.all(Radius.circular(0 * widthm)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,8 +61,8 @@ class _LoginState extends State<Login> {
                           height: 8 * heightm,
                         ),
                         Container(
-                          height: 25 * widthm,
-                          width: 25 * widthm,
+                          height: 35 * widthm,
+                          width: 55 * widthm,
                           child: Image.asset(
                             "assets/images/logo.jpeg",
                           ),
@@ -81,6 +81,7 @@ class _LoginState extends State<Login> {
                             hintText: 'Enter Your Phone Number...',
                             prefixIcon: Icon(
                               Icons.phone,
+                              color: defaultBlue,
                             ),
                             hintStyle: TextStyle(
                               color: Colors.grey,
@@ -90,27 +91,27 @@ class _LoginState extends State<Login> {
                             fillColor: Colors.white70,
                             focusedErrorBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2 * widthm)),
+                                  BorderRadius.all(Radius.circular(0 * widthm)),
                               borderSide: BorderSide(
-                                  color: Colors.red, width: .5 * widthm),
+                                  color: Colors.red, width: .2 * widthm),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2 * widthm)),
+                                  BorderRadius.all(Radius.circular(0 * widthm)),
                               borderSide: BorderSide(
-                                  color: Colors.red, width: .5 * widthm),
+                                  color: Colors.red, width: .2 * widthm),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2 * widthm)),
+                                  BorderRadius.all(Radius.circular(0 * widthm)),
                               borderSide: BorderSide(
-                                  color: Colors.grey, width: .5 * widthm),
+                                  color: Colors.grey, width: .2 * widthm),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2 * widthm)),
+                                  BorderRadius.all(Radius.circular(0 * widthm)),
                               borderSide: BorderSide(
-                                  color: Colors.grey, width: .5 * widthm),
+                                  color: Colors.grey, width: .2 * widthm),
                             ),
                           ),
                         ),
@@ -131,6 +132,7 @@ class _LoginState extends State<Login> {
                               hintText: 'Enter Your Password...',
                               prefixIcon: Icon(
                                 Icons.lock,
+                                color: defaultBlue,
                               ),
                               suffixIcon: GestureDetector(
                                 onTap: () {
@@ -141,7 +143,7 @@ class _LoginState extends State<Login> {
                                       ? Icons.visibility_off
                                       : Icons.visibility,
                                   color:
-                                      hidePassword ? Colors.grey : Colors.blue,
+                                      hidePassword ? Colors.grey : defaultBlue,
                                 ),
                               ),
                               hintStyle: TextStyle(
@@ -152,27 +154,27 @@ class _LoginState extends State<Login> {
                               fillColor: Colors.white70,
                               focusedErrorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
-                                    Radius.circular(2 * widthm)),
+                                    Radius.circular(0 * widthm)),
                                 borderSide: BorderSide(
-                                    color: Colors.red, width: .5 * widthm),
+                                    color: Colors.red, width: .2 * widthm),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
-                                    Radius.circular(2 * widthm)),
+                                    Radius.circular(0 * widthm)),
                                 borderSide: BorderSide(
-                                    color: Colors.red, width: .5 * widthm),
+                                    color: Colors.red, width: .2 * widthm),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
-                                    Radius.circular(2 * widthm)),
+                                    Radius.circular(0 * widthm)),
                                 borderSide: BorderSide(
-                                    color: Colors.grey, width: .5 * widthm),
+                                    color: Colors.grey, width: .2 * widthm),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
-                                    Radius.circular(2 * widthm)),
+                                    Radius.circular(0 * widthm)),
                                 borderSide: BorderSide(
-                                    color: Colors.grey, width: .5 * widthm),
+                                    color: Colors.grey, width: .2 * widthm),
                               ),
                             ),
                           ),
@@ -218,7 +220,7 @@ class _LoginState extends State<Login> {
                             color: defaultBlue,
                             minWidth: 3 * widthm,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
+                              borderRadius: BorderRadius.circular(0.0),
                             ),
                             padding: EdgeInsets.fromLTRB(
                                 3 * widthm, 3 * widthm, 3 * widthm, 3 * widthm),
