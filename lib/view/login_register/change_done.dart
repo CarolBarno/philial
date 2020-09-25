@@ -3,12 +3,12 @@ import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
 import 'package:philial/view/login_register/login.dart';
 
-class ResetDone extends StatefulWidget {
+class ChangeDone extends StatefulWidget {
   @override
-  _ResetDoneState createState() => _ResetDoneState();
+  _ChangeDoneState createState() => _ChangeDoneState();
 }
 
-class _ResetDoneState extends State<ResetDone> {
+class _ChangeDoneState extends State<ChangeDone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +39,7 @@ class _ResetDoneState extends State<ResetDone> {
                 height: 5 * heightm,
               ),
               Text(
-                'Password Reset',
+                'Password Change',
                 style: TextStyle(
                     fontSize: 2.3 * textm,
                     color: Colors.grey[700],
@@ -49,7 +49,7 @@ class _ResetDoneState extends State<ResetDone> {
                 height: .5 * heightm,
               ),
               Text(
-                'Your password has been reset successfully',
+                'Your password has been changed successfully',
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 1.8 * textm,

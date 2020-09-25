@@ -6,23 +6,22 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
 import 'package:philial/res/apis/register_api.dart';
+import 'package:philial/view/login_register/change_done.dart';
 import 'package:philial/view/login_register/reset_done.dart';
 
-class NewPassword extends StatefulWidget {
 
-  String email;
-
-  NewPassword(this.email);
+class ChangePassword extends StatefulWidget {
   @override
-  _NewPasswordState createState() => _NewPasswordState();
+  _ChangePasswordState createState() => _ChangePasswordState();
 }
 
-class _NewPasswordState extends State<NewPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
 
   bool _isLoading = false;
   final _formkey = GlobalKey<FormState>();
 
-  String resetCode;
+  String currentPass;
+  String email;
   String password;
   String confirmPass;
 
@@ -46,7 +45,7 @@ class _NewPasswordState extends State<NewPassword> {
           },
         ),
         title: Text(
-          'New Password',
+          'Change Password',
           //textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 2.3 * textm,
@@ -64,7 +63,7 @@ class _NewPasswordState extends State<NewPassword> {
                 height: 6 * heightm,
               ),
               Text(
-                'Fill in the following details to reset your password',
+                'Fill in the following details to change your password',
                 //textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 1.8 * textm,
@@ -80,7 +79,7 @@ class _NewPasswordState extends State<NewPassword> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Reset Code',
+                      'Email Address',
                       style: TextStyle(
                         fontSize: 1.8 * textm,
                         color: Colors.grey[600],
@@ -99,7 +98,7 @@ class _NewPasswordState extends State<NewPassword> {
                         ),
                       ),
                       child: TextFormField(
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -109,11 +108,11 @@ class _NewPasswordState extends State<NewPassword> {
                           contentPadding: EdgeInsets.all(3 * widthm),
                         ),
                         onChanged: (value) {
-                          resetCode = value;
+                          email = value;
                         },
                         validator: (String value) {
                           if (value.isEmpty) {
-                            return 'Reset code is required';
+                            return 'Email is required';
                           }
                           return null;
                         },
@@ -123,7 +122,50 @@ class _NewPasswordState extends State<NewPassword> {
                       height: 2 * heightm,
                     ),
                     Text(
-                      'Password',
+                      'Current Password',
+                      style: TextStyle(
+                        fontSize: 1.8 * textm,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 1 * heightm,
+                    ),
+                    Container(
+                      height: 6 * heightm,
+                      padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+                      decoration: ShapeDecoration(
+                        color: Colors.grey[200],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        ),
+                      ),
+                      child: TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          contentPadding: EdgeInsets.all(3 * widthm),
+                        ),
+                        onChanged: (value) {
+                          currentPass = value;
+                        },
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'Current Password is required';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 2 * heightm,
+                    ),
+                    Text(
+                      'New Password',
                       style: TextStyle(
                         fontSize: 1.8 * textm,
                         color: Colors.grey[600],
@@ -156,7 +198,7 @@ class _NewPasswordState extends State<NewPassword> {
                         },
                         validator: (String value) {
                           if (value.isEmpty) {
-                            return 'Password is required';
+                            return 'New Password is required';
                           }
                           return null;
                         },
@@ -166,7 +208,7 @@ class _NewPasswordState extends State<NewPassword> {
                       height: 2 * heightm,
                     ),
                     Text(
-                      'Confirm Password',
+                      'Confirm New Password',
                       style: TextStyle(
                         fontSize: 1.8 * textm,
                         color: Colors.grey[600],
@@ -227,7 +269,7 @@ class _NewPasswordState extends State<NewPassword> {
                   padding: EdgeInsets.fromLTRB(
                       3 * widthm, 3 * widthm, 3 * widthm, 3 * widthm),
                   onPressed: () {
-                   _passwordResetRequest();
+                    _passwordChange();
                   },
                   child: _isLoading ?
                   spinKit : Text(
@@ -248,14 +290,14 @@ class _NewPasswordState extends State<NewPassword> {
     );
   }
 
-  _passwordResetRequest() async {
+  _passwordChange() async {
     var res;
 
     var data = {
-    "current_password": "2019",
-    "email": widget.email,
-    "new_password": password,
-    "otpcode": resetCode
+      "current_password": currentPass,
+      "email": email,
+      "new_password": password,
+      "otpcode": "string"
     };
 
     print('reset data $data');
@@ -277,12 +319,12 @@ class _NewPasswordState extends State<NewPassword> {
         await resetPassword(data, url).timeout(const Duration(seconds: 30));
         var body = json.decode(res.body);
 
-        print('reset success response: $body');
+        print('change success response: $body');
         if (res.statusCode == 200) {
           Navigator.push(
               context,
               PageTransition(
-                  child: ResetDone(),
+                  child: ChangeDone(),
                   type: PageTransitionType.rightToLeftWithFade));
           showToast(context, '${body['message']}');
         } else {

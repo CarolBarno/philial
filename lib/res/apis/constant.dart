@@ -4,8 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:philial/res/size_config.dart';
 
-Color dark3 = const Color(0xFF222233);
-Color cyan = const Color(0xFF1fbad6);
+Color defaultBlue = const Color(0xFF1034a6);
 
 Color bgColor = Colors.grey[300];
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
+import 'package:philial/res/apis/profile_data.dart';
+import 'package:philial/view/home/drawer.dart';
 import 'package:philial/view/home/profile.dart';
 
 class Home extends StatefulWidget {
@@ -9,6 +11,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProfileData();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,7 +25,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           centerTitle: true,
           automaticallyImplyLeading: true,
-          backgroundColor: Colors.white,
+          backgroundColor: defaultBlue,
 //          leading: IconButton(
 //            icon: Icon(
 //              Icons.arrow_back,
@@ -28,29 +37,30 @@ class _HomeState extends State<Home> {
 //            },
 //          ),
           title: Text(
-            'You',
+            '$name',
             style: TextStyle(
                 fontSize: 2.3 * textm,
-                color: Colors.blue,
+                color: Colors.white,
                 fontWeight: FontWeight.w800),
           ),
-          actions: [
-          IconButton(
-            icon: Icon(
-              Icons.account_circle,
-              size: 7 * widthm,
-              color: Colors.grey[500],
-            ),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.fade,
-                      child: Profile()));
-            },
-          ),
-          ],
+//          actions: [
+//          IconButton(
+//            icon: Icon(
+//              Icons.account_circle,
+//              size: 7 * widthm,
+//              color: Colors.white70,
+//            ),
+//            onPressed: () {
+//              Navigator.push(
+//                  context,
+//                  PageTransition(
+//                      type: PageTransitionType.fade,
+//                      child: Profile()));
+//            },
+//          ),
+//          ],
         ),
+        drawer: drawer(context),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.fromLTRB(
@@ -104,7 +114,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 Image.asset(
                                   "assets/images/referral.png",
-                                  color: Colors.red,
+                                  color: Colors.red[900],
                                   height: 8 * heightm,
                                 ),
                               ],
@@ -284,7 +294,7 @@ class _HomeState extends State<Home> {
                               children: [
                                 Image.asset(
                                   "assets/images/dollar-currency-symbol.png",
-                                  color: Colors.blue,
+                                  color: defaultBlue,
                                   height: 6 * heightm,
                                 ),
                               ],

@@ -634,7 +634,7 @@ class _RegisterState extends State<Register> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
-          color: Colors.blue,
+          color: defaultBlue,
           minWidth: 3 * widthm,
           padding: EdgeInsets.fromLTRB(
               3 * widthm, 3 * widthm, 3 * widthm, 3 * widthm),
@@ -675,7 +675,7 @@ class _RegisterState extends State<Register> {
             'Philial',
             style: TextStyle(
                 fontSize: 2.3 * textm,
-                color: Colors.blue,
+                color: defaultBlue,
                 fontWeight: FontWeight.w800),
           ),
         ),

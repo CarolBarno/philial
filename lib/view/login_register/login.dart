@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _LoginState extends State<Login> {
                           height: 25 * widthm,
                           width: 25 * widthm,
                           child: Image.asset(
-                            "assets/images/flutter.png",
+                            "assets/images/logo.jpeg",
                           ),
                         ),
                         SizedBox(
@@ -200,7 +201,7 @@ class _LoginState extends State<Login> {
                                 'Reset',
                                 style: TextStyle(
                                     fontSize: 2 * textm,
-                                    color: Colors.blue,
+                                    color: defaultBlue,
                                     fontWeight: FontWeight.w800),
                               ),
                             ),
@@ -213,7 +214,7 @@ class _LoginState extends State<Login> {
                           width: 88 * widthm,
                           child: MaterialButton(
                             disabledColor: Colors.grey,
-                            color: Colors.blue,
+                            color: defaultBlue,
                             minWidth: 3 * widthm,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0),
@@ -269,7 +270,7 @@ class _LoginState extends State<Login> {
                                     style: TextStyle(
                                         fontSize: 2 * textm,
                                         fontFamily: 'OpenSans',
-                                        color: Colors.blue,
+                                        color: defaultBlue,
                                         fontWeight: FontWeight.w600),
                                   )),
                             ]),
@@ -301,11 +302,21 @@ class _LoginState extends State<Login> {
     print('data is $data');
 
     try {
-      var res = await requestToken(data['username'], data['password'])
+      await requestToken(data['username'], data['password'])
           .timeout(const Duration(seconds: 30));
 
-      print('access token response: $res');
-      if (res != null) {
+      var response = await getData('users');
+      print('profile response: ${response.body}');
+      var profile = json.decode(response.body);
+
+
+      if (response.statusCode == 200) {
+
+
+        localStorage.setString('name', profile['full_name']);
+        localStorage.setString('phone', profile['phone_number']);
+        localStorage.setString('email', profile['email']);
+
         Navigator.push(
             context,
             PageTransition(
@@ -313,11 +324,13 @@ class _LoginState extends State<Login> {
                 type: PageTransitionType.scale,
                 child: Home()));
 
-        print('access token not null response: $res');
+//        print('access token not null response: $res');
         showToast(context, "Login successful");
-      } else {
-        print("access token null response  $res");
-        showToast(context, "Invalid login credentials");
+      } else if (response.statusCode == 401) {
+        showToast(context, 'Wrong username or password');
+      } else if(response.statusCode == 500) {
+        showToast(context, 'Server error!');
+//        print('login res ${res.body}');
       }
     } on TimeoutException catch (_) {
       showToast(context, 'Time out');

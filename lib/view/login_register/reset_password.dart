@@ -42,7 +42,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           //textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 2.3 * textm,
-              color: Colors.blue,
+              color: defaultBlue,
               fontWeight: FontWeight.w800),
         ),
       ),
@@ -114,7 +114,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               height: 6 * heightm,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(1 * widthm),
-                color: Colors.blue,
+                color: defaultBlue,
               ),
               child: MaterialButton(
                 disabledColor: Colors.grey,
