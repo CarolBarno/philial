@@ -897,13 +897,17 @@ class _RegisterState extends State<Register> {
     print(body);
     var message = body['message'];
 
-    if (res.statusCode == 201) {
+    if (res.statusCode == 200) {
       showToast(context, '$name  $message');
 
-      await requestToken(phone, password).then((onValue) => Navigator.push(
+      Navigator.push(
           context,
           PageTransition(
-              type: PageTransitionType.fade, child: Login())));
+              type: PageTransitionType.rightToLeft, child: Login()));
+//      await requestToken(phone, password).then((onValue) => Navigator.push(
+//          context,
+//          PageTransition(
+//              type: PageTransitionType.rightToLeft, child: Login())));
     } else {
       showToast(context, '$message');
     }
