@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
+import 'package:philial/res/apis/home_data_api.dart';
 import 'package:philial/res/apis/profile_data.dart';
 import 'package:philial/view/login_register/change_password.dart';
 
@@ -107,8 +108,9 @@ class _ProfileState extends State<Profile> {
                                           Radius.circular(1 * widthm))),
 
                                   child: Center(
-                                    child: Text(
-                                      'Active',
+                                    child:
+                                    accountStatus == null ? Text('') : Text(
+                                      '$accountStatus',
                                       style: TextStyle(
                                         fontSize: 2.3 * textm,
                                         fontWeight: FontWeight.w700,

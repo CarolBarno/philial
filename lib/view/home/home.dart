@@ -98,6 +98,7 @@ class _HomeState extends State<Home> {
                                     SizedBox(
                                       height: 2.5 * heightm,
                                     ),
+                                    numberOfReferrals == null ? Text('') :
                                     Text(
                                       '$numberOfReferrals',
                                       style: TextStyle(
@@ -157,6 +158,7 @@ class _HomeState extends State<Home> {
                                     SizedBox(
                                       height: 2.5 * heightm,
                                     ),
+                                    accountBalance == null ? Text('') :
                                     Text(
                                       'Ksh. $accountBalance',
                                       style: TextStyle(
@@ -276,6 +278,7 @@ class _HomeState extends State<Home> {
                                     SizedBox(
                                       height: 2.5 * heightm,
                                     ),
+                                    nextDueAmount == null ? Text('') :
                                     Text(
                                       'Ksh. $nextDueAmount',
                                       style: TextStyle(

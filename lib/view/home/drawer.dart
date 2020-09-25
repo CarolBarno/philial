@@ -133,7 +133,7 @@ Widget makeWithdrawal(BuildContext context) {
       title: Row(
         children: <Widget>[
           Icon(
-            Icons.receipt,
+            Icons.call_to_action,
             size: size.setWidth(50),
           ),
           SizedBox(
