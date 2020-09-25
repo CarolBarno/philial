@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:philial/res/apis/profile_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final String ipAddress = 'https://philial.org/';
+final String ipAddress = 'https://philial.org:8081/';
 final String URL = '${ipAddress}api/';
 var accesstoken, refreshToken;
 SharedPreferences localStorage;
@@ -86,6 +86,12 @@ _registerSetHeaders() => {
 };
 
 Future<dynamic> resetPassword(data, apiUrl) async {
+  var fullUrl = apiUrl;
+  return await http.post(fullUrl,
+      body: jsonEncode(data), headers: _registerSetHeaders());
+}
+
+Future<dynamic> changePassword(data, apiUrl) async {
   var fullUrl = apiUrl;
   return await http.post(fullUrl,
       body: jsonEncode(data), headers: _registerSetHeaders());

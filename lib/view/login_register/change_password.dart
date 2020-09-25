@@ -293,16 +293,17 @@ class _ChangePasswordState extends State<ChangePassword> {
   _passwordChange() async {
     var res;
 
-    var data = {
-      "current_password": currentPass,
-      "email": email,
-      "new_password": password,
-      "otpcode": "string"
-    };
+    var data = {};
+//    var data = {
+//      "current_password": currentPass,
+//      "email": email,
+//      "new_password": password,
+//      "otpcode": "string"
+//    };
+//
+//    print('reset data $data');
 
-    print('reset data $data');
-
-    var url = '${ipAddress}api/users/reset-Password';
+    var url = '${ipAddress}api/users/updatePassword?currentPassword=$currentPass&email=$email&newPassword=$password';
     setState(() {
       _isLoading = true;
     });
@@ -316,7 +317,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       _formkey.currentState.save();
       try {
         res =
-        await resetPassword(data, url).timeout(const Duration(seconds: 30));
+        await changePassword(data, url).timeout(const Duration(seconds: 30));
         var body = json.decode(res.body);
 
         print('change success response: $body');
