@@ -97,6 +97,7 @@ class _ProfileState extends State<Profile> {
                                 SizedBox(
                                   height: 0.6 * heightm,
                                 ),
+                                accountStatus == "Active" ?
                                 Container(
                                   height: 4 * heightm,
                                   width: 20 * widthm,
@@ -118,7 +119,28 @@ class _ProfileState extends State<Profile> {
                                       ),
                                     ),
                                   ),
-                                ),
+                                ) : accountStatus == "Inactive" ? Container(
+                                  height: 4 * heightm,
+                                  width: 20 * widthm,
+//                                    padding: EdgeInsets.all(2 * widthm),
+                                  decoration: BoxDecoration(
+//                                        color: Colors.grey[300],
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(1 * widthm))),
+
+                                  child: Center(
+                                    child:
+                                    accountStatus == null ? Text('') : Text(
+                                      '$accountStatus',
+                                      style: TextStyle(
+                                        fontSize: 2.3 * textm,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                  ),
+                                ) : Container(),
                                 SizedBox(
                                   height: 3 * heightm,
                                 ),

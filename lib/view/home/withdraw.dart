@@ -164,6 +164,7 @@ class _WithdrawState extends State<Withdraw> {
 
     var url = 'v1/philial/receive-payment/initiate-B2C/${phone}/${amount}';
 
+    print('ttttttttttt $url');
     setState(() {
       _isLoading = true;
     });

@@ -898,7 +898,7 @@ class _RegisterState extends State<Register> {
     var message = body['message'];
 
     if (res.statusCode == 200) {
-      showToast(context, '$name  $message');
+      showToast(context, '$message');
 
       Navigator.push(
           context,

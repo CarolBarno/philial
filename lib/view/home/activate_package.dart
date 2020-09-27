@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
+import 'package:philial/res/apis/home_data_api.dart';
 import 'package:philial/res/apis/packages_api.dart';
 import 'package:philial/res/apis/register_api.dart';
 import 'package:philial/view/home/home.dart';
@@ -51,8 +52,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.fromLTRB(
-              2 * widthm, 3 * widthm, 2 * widthm, 0),
+          padding: EdgeInsets.fromLTRB(2 * widthm, 3 * widthm, 2 * widthm, 0),
           child: Column(
             children: [
               Expanded(
@@ -97,7 +97,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
         } else if (snapshot.hasError) {
           return Center(
               child: Text(
-                '${snapshot.error}',
+            '${snapshot.error}',
 //            'Failed to load items',
             style: TextStyle(
               fontSize: size.setSp(24),
@@ -114,7 +114,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
     ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
     var size = ScreenUtil();
     return ListView.builder(
-      shrinkWrap: true,
+        shrinkWrap: true,
         itemCount: data.length,
         itemBuilder: (context, index) {
           return packageCard(
@@ -128,23 +128,22 @@ class _ActivatePackageState extends State<ActivatePackage> {
               data[index].minOperatingPeriod,
               data[index].monthlySubscription,
               data[index].packageId,
-          _isLoading);
+              _isLoading);
         });
   }
 
   Widget packageCard(
-    BuildContext context,
-    String packageName,
-    String level1Bonus,
-    String level2Bonus,
-    String level3Bonus,
-    String regFee,
-    String minOperatingBal,
-    String minOperatingPeriod,
-    String monthlySubscription,
-    String packageId,
-      bool _isLoading
-  ) {
+      BuildContext context,
+      String packageName,
+      String level1Bonus,
+      String level2Bonus,
+      String level3Bonus,
+      String regFee,
+      String minOperatingBal,
+      String minOperatingPeriod,
+      String monthlySubscription,
+      String packageId,
+      bool _isLoading) {
     ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
     var size = ScreenUtil();
     return Container(
@@ -157,30 +156,34 @@ class _ActivatePackageState extends State<ActivatePackage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text('$packageName Package',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 2.2 * textm,
-                ),),
+                Text(
+                  '$packageName',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 2.2 * textm,
+                  ),
+                ),
                 SizedBox(height: 1 * heightm),
                 Row(
                   children: [
                     Expanded(
                         flex: 2,
-                        child: Text('Level 1 Bonus',
-                        style: TextStyle(
-                          fontSize: 1.8 * textm,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.w400
-                        ),)),
+                        child: Text(
+                          'Level 1 Bonus',
+                          style: TextStyle(
+                              fontSize: 1.8 * textm,
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.w400),
+                        )),
                     Expanded(
                       flex: 1,
-                      child: Text('Ksh. $level1Bonus',
+                      child: Text(
+                        'Ksh. $level1Bonus',
                         style: TextStyle(
                             fontSize: 2 * textm,
                             color: Colors.black87,
-                            fontWeight: FontWeight.w600
-                        ),),
+                            fontWeight: FontWeight.w600),
+                      ),
                     )
                   ],
                 ),
@@ -188,21 +191,20 @@ class _ActivatePackageState extends State<ActivatePackage> {
                 Row(
                   children: [
                     Expanded(
-                        flex: 2,
-                        child: Text('Level 2 Bonus',
-                            style: TextStyle(
-                                fontSize: 1.8 * textm,
-                                color: Colors.grey[600],
-                                fontWeight: FontWeight.w400
-                            )),),
+                      flex: 2,
+                      child: Text('Level 2 Bonus',
+                          style: TextStyle(
+                              fontSize: 1.8 * textm,
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.w400)),
+                    ),
                     Expanded(
                       flex: 1,
                       child: Text('Ksh. $level2Bonus',
                           style: TextStyle(
                               fontSize: 2 * textm,
                               color: Colors.black87,
-                              fontWeight: FontWeight.w600
-                          )),
+                              fontWeight: FontWeight.w600)),
                     )
                   ],
                 ),
@@ -215,16 +217,15 @@ class _ActivatePackageState extends State<ActivatePackage> {
                           style: TextStyle(
                               fontSize: 1.8 * textm,
                               color: Colors.grey[600],
-                              fontWeight: FontWeight.w400
-                          )),),
+                              fontWeight: FontWeight.w400)),
+                    ),
                     Expanded(
                       flex: 1,
                       child: Text('Ksh. $level3Bonus',
                           style: TextStyle(
                               fontSize: 2 * textm,
                               color: Colors.black87,
-                              fontWeight: FontWeight.w600
-                          )),
+                              fontWeight: FontWeight.w600)),
                     )
                   ],
                 ),
@@ -232,21 +233,19 @@ class _ActivatePackageState extends State<ActivatePackage> {
                 Row(
                   children: [
                     Expanded(
-                      flex: 2,
-                      child: Text('Registration Fee',
-                          style: TextStyle(
-                              fontSize: 1.8 * textm,
-                              color: Colors.grey[600],
-                              fontWeight: FontWeight.w400
-                          ))),
+                        flex: 2,
+                        child: Text('Registration Fee',
+                            style: TextStyle(
+                                fontSize: 1.8 * textm,
+                                color: Colors.grey[600],
+                                fontWeight: FontWeight.w400))),
                     Expanded(
                       flex: 1,
                       child: Text('Ksh. $regFee',
                           style: TextStyle(
                               fontSize: 2 * textm,
                               color: Colors.black87,
-                              fontWeight: FontWeight.w600
-                          )),
+                              fontWeight: FontWeight.w600)),
                     )
                   ],
                 ),
@@ -259,16 +258,14 @@ class _ActivatePackageState extends State<ActivatePackage> {
                             style: TextStyle(
                                 fontSize: 1.8 * textm,
                                 color: Colors.grey[600],
-                                fontWeight: FontWeight.w400
-                            ))),
+                                fontWeight: FontWeight.w400))),
                     Expanded(
                       flex: 1,
                       child: Text('Ksh. $minOperatingBal',
                           style: TextStyle(
                               fontSize: 2 * textm,
                               color: Colors.black87,
-                              fontWeight: FontWeight.w600
-                          )),
+                              fontWeight: FontWeight.w600)),
                     )
                   ],
                 ),
@@ -281,16 +278,14 @@ class _ActivatePackageState extends State<ActivatePackage> {
                             style: TextStyle(
                                 fontSize: 1.8 * textm,
                                 color: Colors.grey[600],
-                                fontWeight: FontWeight.w400
-                            ))),
+                                fontWeight: FontWeight.w400))),
                     Expanded(
                       flex: 1,
                       child: Text('$minOperatingPeriod years',
                           style: TextStyle(
                               fontSize: 2 * textm,
                               color: Colors.black87,
-                              fontWeight: FontWeight.w600
-                          )),
+                              fontWeight: FontWeight.w600)),
                     )
                   ],
                 ),
@@ -298,10 +293,9 @@ class _ActivatePackageState extends State<ActivatePackage> {
                 Text(
                   'Ksh. $monthlySubscription / Month',
                   style: TextStyle(
-                    color: Colors.red[900],
-                    fontWeight: FontWeight.w600,
-                    fontSize: 2.3 * textm
-                  ),
+                      color: Colors.red[900],
+                      fontWeight: FontWeight.w600,
+                      fontSize: 2.3 * textm),
                 ),
                 SizedBox(height: 3 * heightm),
                 Container(
@@ -345,7 +339,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
     setState(() {
       isLoading = true;
     });
-print('pppppppppppppp  $packageId');
+    print('pppppppppppppp  $packageId');
     print('$isLoading');
     var data = {"package_id": packageId};
 
@@ -359,17 +353,167 @@ print('pppppppppppppp  $packageId');
     if (res.statusCode == 200) {
       showToast(context, 'Package added successfully');
 
-      Navigator.pushReplacement(context,
-          PageTransition(child: Home(), type: PageTransitionType.leftToRight));
-    } else if(res.statusCode == 409) {
+      activationGuideDialog();
+
+    } else if (res.statusCode == 409) {
       showToast(context, 'You already have an active package');
-    }
-    else {
+    } else {
       showToast(context, 'Unable to activate package');
     }
 
     setState(() {
       isLoading = false;
     });
+  }
+
+  //activation dialog
+  activationGuideDialog() {
+    ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
+    var size = ScreenUtil();
+
+    return showDialog(
+        context: context,
+        child: AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(1 * widthm))),
+          title: Text(
+            'Complete Activation Guide',
+            style: TextStyle(
+              fontSize: 2 * textm,
+              color: Colors.black87,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          content: Container(
+              height: 42 * heightm,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_right,
+                      ),
+                      Flexible(
+                          child: Text(
+                              'Go to Safaricom SIM Tool Kit, select M-PESA menu, select "Lipa na M-PESA"',
+                          style: TextStyle(
+                            fontSize: 1.8 * textm,
+                          ),)),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1 * heightm,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_right,
+                      ),
+                      Flexible(child: Text('Select "Pay Bill"',
+                      style: TextStyle(
+                        fontSize: 1.8 * textm,
+                      ),)),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1 * heightm,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_right,
+                      ),
+                      Flexible(
+                        child: Text(
+                            'Select "Enter Business no.", Enter Philial Lipa na M-PESA PayBill Number 4029361 and press "OK"',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1 * heightm,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_right,
+                      ),
+                      Flexible(
+                        child: Text(
+                            'Select "Enter Account no.", Enter your Phone Number the press "OK"',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,),),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1 * heightm,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_right,
+                      ),
+                      Flexible(
+                        child: Text(
+                            '"Enter Amount", exact activation amount for selected package',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1 * heightm,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_right,
+                      ),
+                      Flexible(child: Text('Enter your M-PESA PIN and press "OK"',
+                      style: TextStyle(
+                        fontSize: 1.8 * textm,
+                      ),)),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 1.2 * heightm,
+                  ),
+                  Text(
+                      'You will receive a confirmation SMS from M-PESA. Then click "COMPLETE" button below',
+                  style: TextStyle(
+                    fontSize: 1.9 * textm,
+                  ),)
+                ],
+              )),
+          actions: <Widget>[
+            SizedBox(
+              width: 33 * widthm,
+              height: 6 * heightm,
+              child: FlatButton(
+                color: defaultBlue,
+                disabledColor: Colors.grey,
+                onPressed: () async {
+                  await getHomeData();
+                  Navigator.pushReplacement(
+                      context,
+                      PageTransition(
+                          child: Home(), type: PageTransitionType.leftToRight));
+                },
+                child: Text(
+                  'Complete',
+                  style: TextStyle(
+                    fontSize: size.setSp(24),
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
