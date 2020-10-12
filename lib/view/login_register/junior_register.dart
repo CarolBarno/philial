@@ -5,21 +5,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
+import 'package:philial/res/apis/packages_api.dart';
 import 'package:philial/res/apis/register_api.dart';
 import 'package:philial/view/login_register/login.dart';
 
-
-class Register extends StatefulWidget {
+class JuniorRegister extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _JuniorRegisterState createState() => _JuniorRegisterState();
 }
 
-class _RegisterState extends State<Register> {
+class _JuniorRegisterState extends State<JuniorRegister> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool isLoading = false;
 
   DateTime _dob = DateTime.now();
+  DateTime _juniorDob = DateTime.now();
   String membershipType;
   String name;
   String phone;
@@ -37,6 +38,9 @@ class _RegisterState extends State<Register> {
   String password;
   String confirmPass;
   String packageId;
+  String juniorName;
+  String juniorGender;
+  String juniorDob;
 
   List data = List();
 
@@ -47,11 +51,9 @@ class _RegisterState extends State<Register> {
   }
 
   Future<String> getPackages() async {
-
     final response = await getPackage('package?pageNo=0&pageSize=10');
     var body = json.decode(response.body);
     var resBody2 = body['content'];
-    print(resBody2);
     setState(() {
       data = resBody2;
     });
@@ -98,50 +100,82 @@ class _RegisterState extends State<Register> {
       );
     }
 
-//    Widget buildMembershipType() {
-//      return Container(
-//        height: 6 * heightm,
-//        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
-//        decoration: ShapeDecoration(
-//          color: Colors.grey[200],
-//          shape: RoundedRectangleBorder(
-//            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-//          ),
-//        ),
-//        child: DropdownButtonHideUnderline(
-//          child: DropdownButton<String>(
-//              iconEnabledColor: defaultBlue,
-//              iconDisabledColor: Colors.grey,
-//              isExpanded: true,
-//              hint: Text(
-//                "Select",
-//                style: TextStyle(
-//                    color: Colors.grey[800],
-//                    fontSize: 1.8 * textm,
-//                    fontWeight: FontWeight.w500),
-//              ),
-//              isDense: true,
-//              items: ["Individual", "Junior", "Corporate"]
-//                  .map((filter) => DropdownMenuItem<String>(
-//                        child: Text(
-//                          filter,
-//                          style: TextStyle(
-//                              color: Colors.grey[800],
-//                              fontSize: 1.8 * textm,
-//                              fontWeight: FontWeight.w500),
-//                        ),
-//                        value: filter,
-//                      ))
-//                  .toList(),
-//              onChanged: (newValue) {
-//                setState(() {
-//                  membershipType = newValue;
-//                });
-//              },
-//              value: membershipType),
-//        ),
-//      );
-//    }
+    Widget buildJuniorFullName() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            juniorName = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Full name is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+    Widget buildMembershipType() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+              iconEnabledColor: defaultBlue,
+              iconDisabledColor: Colors.grey,
+              isExpanded: true,
+              hint: Text(
+                "Select",
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontSize: 1.8 * textm,
+                    fontWeight: FontWeight.w500),
+              ),
+              isDense: true,
+              items: ["Individual", "Junior", "Corporate"]
+                  .map((filter) => DropdownMenuItem<String>(
+                        child: Text(
+                          filter,
+                          style: TextStyle(
+                              color: Colors.grey[800],
+                              fontSize: 1.8 * textm,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        value: filter,
+                      ))
+                  .toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  membershipType = newValue;
+                });
+              },
+              value: membershipType),
+        ),
+      );
+    }
 
     _selectDate(BuildContext context) async {
       final DateTime picked = await showDatePicker(
@@ -201,6 +235,64 @@ class _RegisterState extends State<Register> {
       );
     }
 
+    _selectJuniorDate(BuildContext context) async {
+      final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: _juniorDob,
+        firstDate: DateTime(1950),
+        lastDate: DateTime(2050),
+        builder: (context, child) {
+          return Theme(
+            data: ThemeData.dark(),
+            child: child,
+          );
+        },
+      );
+      if (picked != null && picked != _dob)
+        setState(() {
+          juniorDob = DateFormat('yyyy-MM-dd').format(picked);
+          _juniorDob = picked;
+        });
+    }
+
+    Widget buildJuniorDob() {
+      return GestureDetector(
+        onTap: () {
+          _selectJuniorDate(context);
+        },
+        child: Container(
+          height: 6 * heightm,
+          padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+          decoration: ShapeDecoration(
+            color: Colors.grey[200],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _juniorDob == null
+                  ? Text(
+                "Select",
+                style: TextStyle(
+                  fontSize: 2 * textm,
+                  color: Colors.grey[700],
+                  fontWeight: FontWeight.w600,
+                ),
+              )
+                  : Text("${_juniorDob.toLocal()}".split(' ')[0]),
+              Icon(
+                Icons.calendar_today,
+                color: defaultBlue,
+                size: 7 * widthm,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     Widget buildGender() {
       return Container(
         height: 6 * heightm,
@@ -242,6 +334,51 @@ class _RegisterState extends State<Register> {
                 });
               },
               value: gender),
+        ),
+      );
+    }
+
+    Widget buildJuniorGender() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+              iconEnabledColor: defaultBlue,
+              iconDisabledColor: Colors.grey,
+              isExpanded: true,
+              hint: Text(
+                "Select",
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontSize: 1.8 * textm,
+                    fontWeight: FontWeight.w500),
+              ),
+              isDense: true,
+              items: ["Female", "Male", "Others"]
+                  .map((filter) => DropdownMenuItem<String>(
+                child: Text(
+                  filter,
+                  style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 1.8 * textm,
+                      fontWeight: FontWeight.w500),
+                ),
+                value: filter,
+              ))
+                  .toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  juniorGender = newValue;
+                });
+              },
+              value: juniorGender),
         ),
       );
     }
@@ -316,27 +453,25 @@ class _RegisterState extends State<Register> {
               isDense: true,
               items: data
                   .map((filter) => DropdownMenuItem<String>(
-                child: Text(
-                  filter['package_name'],
-                  style: TextStyle(
-                      color: Colors.grey[800],
-                      fontSize: 1.8 * textm,
-                      fontWeight: FontWeight.w500),
-                ),
-                value: filter['package_id'].toString(),
-              ))
+                        child: Text(
+                          filter['package_name'],
+                          style: TextStyle(
+                              color: Colors.grey[800],
+                              fontSize: 1.8 * textm,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        value: filter['package_id'].toString(),
+                      ))
                   .toList(),
               onChanged: (newValue) {
                 setState(() {
                   packageId = newValue;
                 });
-
               },
               value: packageId),
         ),
       );
     }
-
 
     Widget buildEmail() {
       return Container(
@@ -762,7 +897,6 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 Form(
                   key: formKey,
-                  autovalidate: true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -774,12 +908,13 @@ class _RegisterState extends State<Register> {
 //                      ),
 //                      SizedBox(height: size.setHeight(20)),
 //                      buildMembershipType(),
-                    Text('Enter Individual details',
-                      style: TextStyle(
-                          fontSize: 1.9 * textm,
-                          color: Colors.grey[500],
+//                      SizedBox(height: size.setHeight(20)),
+                      Text('Enter parent/guardian details',
+                        style: TextStyle(
+                            fontSize: 1.9 * textm,
+                            color: Colors.grey[500],
                           fontWeight: FontWeight.w600
-                      ),),
+                        ),),
                       SizedBox(height: size.setHeight(20)),
                       Text(
                         'Full Name',
@@ -906,6 +1041,40 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: size.setHeight(20)),
                       buildReferredBy(),
+                      SizedBox(height: size.setHeight(30)),
+                      Text('Enter junior member details',
+                        style: TextStyle(
+                            fontSize: 1.9 * textm,
+                            color: Colors.grey[500],
+                            fontWeight: FontWeight.w600
+                        ),),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Junior Member Full Name',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildJuniorFullName(),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Junior Member Date Of Birth',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildJuniorDob(),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Junior Member Gender',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildJuniorGender(),
                       SizedBox(height: size.setHeight(20)),
                       Text(
                         'Password',
@@ -959,7 +1128,7 @@ class _RegisterState extends State<Register> {
       "gender": gender,
       "id_number": idNumber,
       "marital_status": maritalStatus,
-      "membership_type_enum": 'Individual',
+      "membership_type_enum": 'Junior',
       "otp": true,
       "package_id": packageId,
       "password": password,
@@ -968,7 +1137,14 @@ class _RegisterState extends State<Register> {
       "religion": religion,
       "residence": residence,
       "user_type_enum": "Subscriber",
-      "ward": ward
+      "ward": ward,
+      "junior_membership_datas": [
+        {
+          "date_of_birth": juniorDob,
+          "full_name": juniorName,
+          "gender": juniorGender
+        }
+      ],
     };
 
     print('data is $data');
@@ -982,10 +1158,8 @@ class _RegisterState extends State<Register> {
     if (res.statusCode == 200) {
       showToast(context, '$message');
 
-      Navigator.push(
-          context,
-          PageTransition(
-              type: PageTransitionType.rightToLeft, child: Login()));
+      Navigator.push(context,
+          PageTransition(type: PageTransitionType.rightToLeft, child: Login()));
 //      await requestToken(phone, password).then((onValue) => Navigator.push(
 //          context,
 //          PageTransition(

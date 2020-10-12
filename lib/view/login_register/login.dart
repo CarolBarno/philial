@@ -8,7 +8,9 @@ import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
 import 'package:philial/res/apis/home_data_api.dart';
 import 'package:philial/res/apis/register_api.dart';
+import 'package:philial/view/home/account_payment.dart';
 import 'package:philial/view/home/home.dart';
+import 'package:philial/view/login_register/account_type.dart';
 import 'package:philial/view/login_register/register.dart';
 import 'package:philial/view/login_register/reset_password.dart';
 
@@ -265,7 +267,7 @@ class _LoginState extends State<Login> {
                                       context,
                                       PageTransition(
                                           type: PageTransitionType.rightToLeft,
-                                          child: Register()),
+                                          child: AccountType()),
                                     );
                                   },
                                   child: Text(
@@ -322,15 +324,31 @@ class _LoginState extends State<Login> {
 
         await getHomeData();
 
-        Navigator.push(
-            context,
-            PageTransition(
-                duration: Duration(milliseconds: 500),
-                type: PageTransitionType.scale,
-                child: Home()));
+        if(accountStatus == "Inactive") {
 
-//        print('access token not null response: $res');
-        showToast(context, "Login successful");
+          Navigator.push(
+              context,
+              PageTransition(
+                  duration: Duration(milliseconds: 500),
+                  type: PageTransitionType.scale,
+                  child: AccountPayment()));
+
+          showToast(context, "Please activate your account");
+
+        } else {
+
+          Navigator.push(
+              context,
+              PageTransition(
+                  duration: Duration(milliseconds: 500),
+                  type: PageTransitionType.scale,
+                  child: Home()));
+
+          showToast(context, "Login successful");
+
+        }
+
+
       } else if (response.statusCode == 401) {
         showToast(context, 'Wrong username or password');
       } else if(response.statusCode == 500) {

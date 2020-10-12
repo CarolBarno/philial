@@ -147,10 +147,10 @@ class _ActivatePackageState extends State<ActivatePackage> {
     ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
     var size = ScreenUtil();
     return Container(
-      height: 43 * heightm,
+      height: 30 * heightm,
       child: Card(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(3 * widthm, size.setWidth(20),
+          padding: EdgeInsets.fromLTRB(3 * widthm, 0,
               size.setWidth(10), size.setWidth(10)),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -234,7 +234,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
                   children: [
                     Expanded(
                         flex: 2,
-                        child: Text('Registration Fee',
+                        child: Text('Activation Fee',
                             style: TextStyle(
                                 fontSize: 1.8 * textm,
                                 color: Colors.grey[600],
@@ -250,26 +250,26 @@ class _ActivatePackageState extends State<ActivatePackage> {
                   ],
                 ),
                 SizedBox(height: 1 * heightm),
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 2,
-                        child: Text('Minimum Operating Balance',
-                            style: TextStyle(
-                                fontSize: 1.8 * textm,
-                                color: Colors.grey[600],
-                                fontWeight: FontWeight.w400))),
-                    Expanded(
-                      flex: 1,
-                      child: Text('Ksh. $minOperatingBal',
-                          style: TextStyle(
-                              fontSize: 2 * textm,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w600)),
-                    )
-                  ],
-                ),
-                SizedBox(height: 1 * heightm),
+//                Row(
+//                  children: [
+//                    Expanded(
+//                        flex: 2,
+//                        child: Text('Minimum Operating Balance',
+//                            style: TextStyle(
+//                                fontSize: 1.8 * textm,
+//                                color: Colors.grey[600],
+//                                fontWeight: FontWeight.w400))),
+//                    Expanded(
+//                      flex: 1,
+//                      child: Text('Ksh. $minOperatingBal',
+//                          style: TextStyle(
+//                              fontSize: 2 * textm,
+//                              color: Colors.black87,
+//                              fontWeight: FontWeight.w600)),
+//                    )
+//                  ],
+//                ),
+//                SizedBox(height: 1 * heightm),
                 Row(
                   children: [
                     Expanded(
@@ -297,37 +297,37 @@ class _ActivatePackageState extends State<ActivatePackage> {
                       fontWeight: FontWeight.w600,
                       fontSize: 2.3 * textm),
                 ),
-                SizedBox(height: 3 * heightm),
-                Container(
-                  width: 40 * widthm,
-                  height: 6 * heightm,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1 * widthm),
-                    color: defaultBlue,
-                  ),
-                  child: MaterialButton(
-                    disabledColor: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    padding: EdgeInsets.fromLTRB(
-                        3 * widthm, 3 * widthm, 3 * widthm, 3 * widthm),
-                    onPressed: () async {
-                      await activatePackage(packageId, _isLoading);
-                    },
-                    child: _isLoading
-                        ? spinKit
-                        : Text(
-                            'Activate',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 2 * textm,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                  ),
-                ),
+//                SizedBox(height: 3 * heightm),
+//                Container(
+//                  width: 40 * widthm,
+//                  height: 6 * heightm,
+//                  decoration: BoxDecoration(
+//                    borderRadius: BorderRadius.circular(1 * widthm),
+//                    color: defaultBlue,
+//                  ),
+//                  child: MaterialButton(
+//                    disabledColor: Colors.grey,
+//                    shape: RoundedRectangleBorder(
+//                      borderRadius: BorderRadius.circular(5.0),
+//                    ),
+//                    padding: EdgeInsets.fromLTRB(
+//                        3 * widthm, 3 * widthm, 3 * widthm, 3 * widthm),
+//                    onPressed: () async {
+//                      await activatePackage(packageId, _isLoading);
+//                    },
+//                    child: _isLoading
+//                        ? spinKit
+//                        : Text(
+//                            'Activate',
+//                            textAlign: TextAlign.center,
+//                            style: TextStyle(
+//                              fontSize: 2 * textm,
+//                              color: Colors.white,
+//                              fontWeight: FontWeight.bold,
+//                            ),
+//                          ),
+//                  ),
+//                ),
               ]),
         ),
       ),

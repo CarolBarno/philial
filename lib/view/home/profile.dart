@@ -97,7 +97,7 @@ class _ProfileState extends State<Profile> {
                                 SizedBox(
                                   height: 0.6 * heightm,
                                 ),
-                                accountStatus == "Active" ?
+                                accountStatus == "Activated" ?
                                 Container(
                                   height: 4 * heightm,
                                   width: 20 * widthm,
