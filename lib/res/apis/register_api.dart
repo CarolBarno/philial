@@ -97,3 +97,9 @@ Future<dynamic> changePassword(data, apiUrl) async {
   return await http.post(fullUrl,
       body: jsonEncode(data), headers: _setHeaders());
 }
+
+Future<dynamic> getPackage(apiUrl) async {
+
+  var fullUrl = URL + apiUrl;
+  return await http.get(fullUrl, headers: _registerSetHeaders());
+}

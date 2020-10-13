@@ -8,13 +8,12 @@ import 'package:philial/res/apis/constant.dart';
 import 'package:philial/res/apis/register_api.dart';
 import 'package:philial/view/login_register/login.dart';
 
-
-class Register extends StatefulWidget {
+class CorporateRegister extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _CorporateRegisterState createState() => _CorporateRegisterState();
 }
 
-class _RegisterState extends State<Register> {
+class _CorporateRegisterState extends State<CorporateRegister> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   bool isLoading = false;
@@ -37,6 +36,15 @@ class _RegisterState extends State<Register> {
   String password;
   String confirmPass;
   String packageId;
+  String registrationNumber;
+  String email1;
+  String name1;
+  String phone1;
+  String email2;
+  String name2;
+  String phone2;
+  String gender2;
+  String idNumber2;
 
   List data = List();
 
@@ -47,11 +55,9 @@ class _RegisterState extends State<Register> {
   }
 
   Future<String> getPackages() async {
-
     final response = await getPackage('package?pageNo=0&pageSize=10');
     var body = json.decode(response.body);
     var resBody2 = body['content'];
-    print(resBody2);
     setState(() {
       data = resBody2;
     });
@@ -64,7 +70,7 @@ class _RegisterState extends State<Register> {
     var size = ScreenUtil();
 
     TextStyle style =
-        TextStyle(fontFamily: 'OpenSans', fontSize: size.setSp(24));
+    TextStyle(fontFamily: 'OpenSans', fontSize: size.setSp(24));
 
     Widget buildFullName() {
       return Container(
@@ -98,50 +104,114 @@ class _RegisterState extends State<Register> {
       );
     }
 
-//    Widget buildMembershipType() {
-//      return Container(
-//        height: 6 * heightm,
-//        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
-//        decoration: ShapeDecoration(
-//          color: Colors.grey[200],
-//          shape: RoundedRectangleBorder(
-//            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-//          ),
-//        ),
-//        child: DropdownButtonHideUnderline(
-//          child: DropdownButton<String>(
-//              iconEnabledColor: defaultBlue,
-//              iconDisabledColor: Colors.grey,
-//              isExpanded: true,
-//              hint: Text(
-//                "Select",
-//                style: TextStyle(
-//                    color: Colors.grey[800],
-//                    fontSize: 1.8 * textm,
-//                    fontWeight: FontWeight.w500),
-//              ),
-//              isDense: true,
-//              items: ["Individual", "Junior", "Corporate"]
-//                  .map((filter) => DropdownMenuItem<String>(
-//                        child: Text(
-//                          filter,
-//                          style: TextStyle(
-//                              color: Colors.grey[800],
-//                              fontSize: 1.8 * textm,
-//                              fontWeight: FontWeight.w500),
-//                        ),
-//                        value: filter,
-//                      ))
-//                  .toList(),
-//              onChanged: (newValue) {
-//                setState(() {
-//                  membershipType = newValue;
-//                });
-//              },
-//              value: membershipType),
-//        ),
-//      );
-//    }
+    Widget buildFullName1() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            name1 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Full name is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+    Widget buildFullName2() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            name2 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Full name is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+    Widget buildMembershipType() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+              iconEnabledColor: defaultBlue,
+              iconDisabledColor: Colors.grey,
+              isExpanded: true,
+              hint: Text(
+                "Select",
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontSize: 1.8 * textm,
+                    fontWeight: FontWeight.w500),
+              ),
+              isDense: true,
+              items: ["Individual", "Junior", "Corporate"]
+                  .map((filter) => DropdownMenuItem<String>(
+                child: Text(
+                  filter,
+                  style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 1.8 * textm,
+                      fontWeight: FontWeight.w500),
+                ),
+                value: filter,
+              ))
+                  .toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  membershipType = newValue;
+                });
+              },
+              value: membershipType),
+        ),
+      );
+    }
 
     _selectDate(BuildContext context) async {
       final DateTime picked = await showDatePicker(
@@ -182,13 +252,13 @@ class _RegisterState extends State<Register> {
             children: [
               _dob == null
                   ? Text(
-                      "Select",
-                      style: TextStyle(
-                        fontSize: 2 * textm,
-                        color: Colors.grey[700],
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )
+                "Select",
+                style: TextStyle(
+                  fontSize: 2 * textm,
+                  color: Colors.grey[700],
+                  fontWeight: FontWeight.w600,
+                ),
+              )
                   : Text("${_dob.toLocal()}".split(' ')[0]),
               Icon(
                 Icons.calendar_today,
@@ -226,15 +296,15 @@ class _RegisterState extends State<Register> {
               isDense: true,
               items: ["Female", "Male", "Others"]
                   .map((filter) => DropdownMenuItem<String>(
-                        child: Text(
-                          filter,
-                          style: TextStyle(
-                              color: Colors.grey[800],
-                              fontSize: 1.8 * textm,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        value: filter,
-                      ))
+                child: Text(
+                  filter,
+                  style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 1.8 * textm,
+                      fontWeight: FontWeight.w500),
+                ),
+                value: filter,
+              ))
                   .toList(),
               onChanged: (newValue) {
                 setState(() {
@@ -242,6 +312,51 @@ class _RegisterState extends State<Register> {
                 });
               },
               value: gender),
+        ),
+      );
+    }
+
+    Widget buildGender2() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+              iconEnabledColor: defaultBlue,
+              iconDisabledColor: Colors.grey,
+              isExpanded: true,
+              hint: Text(
+                "Select",
+                style: TextStyle(
+                    color: Colors.grey[800],
+                    fontSize: 1.8 * textm,
+                    fontWeight: FontWeight.w500),
+              ),
+              isDense: true,
+              items: ["Female", "Male", "Others"]
+                  .map((filter) => DropdownMenuItem<String>(
+                child: Text(
+                  filter,
+                  style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 1.8 * textm,
+                      fontWeight: FontWeight.w500),
+                ),
+                value: filter,
+              ))
+                  .toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  gender2 = newValue;
+                });
+              },
+              value: gender2),
         ),
       );
     }
@@ -271,15 +386,15 @@ class _RegisterState extends State<Register> {
               isDense: true,
               items: ["Single", "Married"]
                   .map((filter) => DropdownMenuItem<String>(
-                        child: Text(
-                          filter,
-                          style: TextStyle(
-                              color: Colors.grey[800],
-                              fontSize: 1.8 * textm,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        value: filter,
-                      ))
+                child: Text(
+                  filter,
+                  style: TextStyle(
+                      color: Colors.grey[800],
+                      fontSize: 1.8 * textm,
+                      fontWeight: FontWeight.w500),
+                ),
+                value: filter,
+              ))
                   .toList(),
               onChanged: (newValue) {
                 setState(() {
@@ -330,13 +445,11 @@ class _RegisterState extends State<Register> {
                 setState(() {
                   packageId = newValue;
                 });
-
               },
               value: packageId),
         ),
       );
     }
-
 
     Widget buildEmail() {
       return Container(
@@ -371,6 +484,72 @@ class _RegisterState extends State<Register> {
       );
     }
 
+    Widget buildEmail1() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+          keyboardType: TextInputType.emailAddress,
+//          autocorrect: true,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            email1 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Email is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+    Widget buildEmail2() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+          keyboardType: TextInputType.emailAddress,
+//          autocorrect: true,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            email2 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Email is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
     Widget buildCounty() {
       return Container(
         height: 6 * heightm,
@@ -392,6 +571,37 @@ class _RegisterState extends State<Register> {
           ),
           onChanged: (value) {
             county = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'County is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+    Widget buildRegistrationNumber() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            registrationNumber = value;
           },
           validator: (String value) {
             if (value.isEmpty) {
@@ -668,6 +878,41 @@ class _RegisterState extends State<Register> {
       );
     }
 
+    Widget buildIdNumber2() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+//          autocorrect: true,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            idNumber2 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'ID number is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+
+
     Widget buildPhone() {
       return Container(
         height: 6 * heightm,
@@ -701,6 +946,72 @@ class _RegisterState extends State<Register> {
       );
     }
 
+    Widget buildPhone1() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+//          autocorrect: true,
+          keyboardType: TextInputType.phone,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            phone1 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Phone number is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
+    Widget buildPhone2() {
+      return Container(
+        height: 6 * heightm,
+        padding: EdgeInsets.fromLTRB(3 * widthm, 0, 3 * widthm, 0),
+        decoration: ShapeDecoration(
+          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          ),
+        ),
+        child: TextFormField(
+//          autocorrect: true,
+          keyboardType: TextInputType.phone,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          onChanged: (value) {
+            phone2 = value;
+          },
+          validator: (String value) {
+            if (value.isEmpty) {
+              return 'Phone number is required';
+            }
+            return null;
+          },
+        ),
+      );
+    }
+
     Widget buildJoinButton() {
       return SizedBox(
         width: 88 * widthm,
@@ -717,14 +1028,14 @@ class _RegisterState extends State<Register> {
           child: isLoading
               ? spinKit
               : Text(
-                  'Register',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 2 * textm,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            'Register',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 2 * textm,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       );
     }
@@ -762,7 +1073,6 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 Form(
                   key: formKey,
-                  autovalidate: true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -774,15 +1084,16 @@ class _RegisterState extends State<Register> {
 //                      ),
 //                      SizedBox(height: size.setHeight(20)),
 //                      buildMembershipType(),
-                    Text('Enter Individual details',
-                      style: TextStyle(
-                          fontSize: 1.9 * textm,
-                          color: Colors.grey[500],
-                          fontWeight: FontWeight.w600
-                      ),),
+//                      SizedBox(height: size.setHeight(20)),
+                      Text('Enter corporate details',
+                        style: TextStyle(
+                            fontSize: 1.9 * textm,
+                            color: Colors.grey[500],
+                            fontWeight: FontWeight.w600
+                        ),),
                       SizedBox(height: size.setHeight(20)),
                       Text(
-                        'Full Name',
+                        'Name',
                         style: TextStyle(
                           fontSize: 1.8 * textm,
                         ),
@@ -809,40 +1120,13 @@ class _RegisterState extends State<Register> {
                       buildEmail(),
                       SizedBox(height: size.setHeight(20)),
                       Text(
-                        'Date of Birth',
+                        'Registration Number',
                         style: TextStyle(
                           fontSize: 1.8 * textm,
                         ),
                       ),
                       SizedBox(height: size.setHeight(20)),
-                      buildDob(),
-                      SizedBox(height: size.setHeight(20)),
-                      Text(
-                        'Gender',
-                        style: TextStyle(
-                          fontSize: 1.8 * textm,
-                        ),
-                      ),
-                      SizedBox(height: size.setHeight(20)),
-                      buildGender(),
-                      SizedBox(height: size.setHeight(20)),
-                      Text(
-                        'Marital Status',
-                        style: TextStyle(
-                          fontSize: 1.8 * textm,
-                        ),
-                      ),
-                      SizedBox(height: size.setHeight(20)),
-                      buildMaritalStatus(),
-                      SizedBox(height: size.setHeight(20)),
-                      Text(
-                        'ID Number',
-                        style: TextStyle(
-                          fontSize: 1.8 * textm,
-                        ),
-                      ),
-                      SizedBox(height: size.setHeight(20)),
-                      buildIdNumber(),
+                      buildRegistrationNumber(),
                       SizedBox(height: size.setHeight(20)),
                       Text(
                         'County',
@@ -872,22 +1156,13 @@ class _RegisterState extends State<Register> {
                       buildWard(),
                       SizedBox(height: size.setHeight(20)),
                       Text(
-                        'Residence',
+                        'Location',
                         style: TextStyle(
                           fontSize: 1.8 * textm,
                         ),
                       ),
                       SizedBox(height: size.setHeight(20)),
                       buildResidence(),
-                      SizedBox(height: size.setHeight(20)),
-                      Text(
-                        'Religion',
-                        style: TextStyle(
-                          fontSize: 1.8 * textm,
-                        ),
-                      ),
-                      SizedBox(height: size.setHeight(20)),
-                      buildReligion(),
                       SizedBox(height: size.setHeight(20)),
                       Text(
                         'Package',
@@ -906,7 +1181,118 @@ class _RegisterState extends State<Register> {
                       ),
                       SizedBox(height: size.setHeight(20)),
                       buildReferredBy(),
+                      SizedBox(height: size.setHeight(30)),
+                      Text('Enter corporate signatory 1 details',
+                        style: TextStyle(
+                            fontSize: 1.9 * textm,
+                            color: Colors.grey[500],
+                            fontWeight: FontWeight.w600
+                        ),),
                       SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 1 Full Name',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildFullName1(),
+                      SizedBox(height: size.setHeight(20)),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 1 Email',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildEmail1(),
+                      SizedBox(height: size.setHeight(20)),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 1 ID Number',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildIdNumber(),
+                      SizedBox(height: size.setHeight(20)),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 1 Phone',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildPhone1(),
+                      SizedBox(height: size.setHeight(20)),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 1 Gender',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildGender(),
+                      SizedBox(height: size.setHeight(30)),
+                      Text('Enter corporate signatory 2 details',
+                        style: TextStyle(
+                            fontSize: 1.9 * textm,
+                            color: Colors.grey[500],
+                            fontWeight: FontWeight.w600
+                        ),),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 2 Full Name',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildFullName2(),
+                      SizedBox(height: size.setHeight(20)),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 2 Email',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildEmail2(),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 2 ID Number',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildIdNumber2(),
+                      SizedBox(height: size.setHeight(20)),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 2 Phone',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildPhone2(),
+                      SizedBox(height: size.setHeight(20)),
+                      Text(
+                        'Corporate Signatory 2 Gender',
+                        style: TextStyle(
+                          fontSize: 1.8 * textm,
+                        ),
+                      ),
+                      SizedBox(height: size.setHeight(20)),
+                      buildGender2(),
+                      SizedBox(height: size.setHeight(20)),
+
                       Text(
                         'Password',
                         style: TextStyle(
@@ -953,22 +1339,34 @@ class _RegisterState extends State<Register> {
     var data = {
       "constituency": constituency,
       "county": county,
-      "date_of_birth": dob,
       "email": email,
       "full_name": name,
-      "gender": gender,
-      "id_number": idNumber,
-      "marital_status": maritalStatus,
-      "membership_type_enum": 'Individual',
+      "id_number": registrationNumber,
+      "membership_type_enum": 'Corporate',
       "otp": true,
       "package_id": packageId,
       "password": password,
       "phone_number": phone,
       "reffered_by": referredBy,
-      "religion": religion,
       "residence": residence,
       "user_type_enum": "Subscriber",
-      "ward": ward
+      "ward": ward,
+      "corporate_signatories_datas": [
+        {
+          "email": email1,
+          "full_name": name1,
+          "gender": gender,
+          "id_number": idNumber,
+          "phone_number": phone1,
+        },
+        {
+          "email": email2,
+          "full_name": name2,
+          "gender": gender2,
+          "id_number": idNumber2,
+          "phone_number": phone2,
+        }
+      ],
     };
 
     print('data is $data');
@@ -982,10 +1380,8 @@ class _RegisterState extends State<Register> {
     if (res.statusCode == 200) {
       showToast(context, '$message');
 
-      Navigator.push(
-          context,
-          PageTransition(
-              type: PageTransitionType.rightToLeft, child: Login()));
+      Navigator.push(context,
+          PageTransition(type: PageTransitionType.rightToLeft, child: Login()));
 //      await requestToken(phone, password).then((onValue) => Navigator.push(
 //          context,
 //          PageTransition(
