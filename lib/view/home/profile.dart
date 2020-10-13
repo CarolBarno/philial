@@ -18,12 +18,12 @@ class _ProfileState extends State<Profile> {
         appBar: AppBar(
           centerTitle: true,
           automaticallyImplyLeading: true,
-          backgroundColor: Colors.white,
+          backgroundColor: defaultBlue,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
               size: 6 * widthm,
-              color: Colors.grey[500],
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
             'My Profile',
             style: TextStyle(
                 fontSize: 2.3 * textm,
-                color: defaultBlue,
+                color: Colors.white,
                 fontWeight: FontWeight.w800),
           ),
         ),
@@ -113,9 +113,9 @@ class _ProfileState extends State<Profile> {
                                     accountStatus == null ? Text('') : Text(
                                       '$accountStatus',
                                       style: TextStyle(
-                                        fontSize: 2.3 * textm,
+                                        fontSize: 1.8 * textm,
                                         fontWeight: FontWeight.w700,
-                                        color: Colors.black87,
+                                        color: Colors.white,
                                       ),
                                     ),
                                   ),
@@ -134,9 +134,9 @@ class _ProfileState extends State<Profile> {
                                     accountStatus == null ? Text('') : Text(
                                       '$accountStatus',
                                       style: TextStyle(
-                                        fontSize: 2.3 * textm,
+                                        fontSize:1.8 * textm,
                                         fontWeight: FontWeight.w700,
-                                        color: Colors.black87,
+                                        color: Colors.white,
                                       ),
                                     ),
                                   ),

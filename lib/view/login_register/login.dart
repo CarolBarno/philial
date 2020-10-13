@@ -78,9 +78,9 @@ class _LoginState extends State<Login> {
                           decoration: InputDecoration(
                             isDense: true,
                             contentPadding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                            hintText: 'Enter Your Phone Number...',
+                            hintText: 'Enter Your Email Address...',
                             prefixIcon: Icon(
-                              Icons.phone,
+                              Icons.email,
                               color: defaultBlue,
                             ),
                             hintStyle: TextStyle(
