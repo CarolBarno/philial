@@ -281,7 +281,7 @@ class _ActivatePackageState extends State<ActivatePackage> {
                                 fontWeight: FontWeight.w400))),
                     Expanded(
                       flex: 1,
-                      child: Text('$minOperatingPeriod years',
+                      child: Text('$minOperatingPeriod Months',
                           style: TextStyle(
                               fontSize: 2 * textm,
                               color: Colors.black87,
