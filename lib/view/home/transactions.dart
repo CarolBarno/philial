@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:philial/res/apis/constant.dart';
 import 'package:philial/res/apis/transactions_api.dart';
@@ -12,6 +13,7 @@ class Transactions extends StatefulWidget {
 }
 
 class _TransactionsState extends State<Transactions> {
+
   @override
   void initState() {
     _futuretransactions = fetchTransactions();
@@ -143,7 +145,7 @@ Widget mytransactionsFunction(BuildContext context) {
   );
 }
 
-Widget mytransactionsListView(BuildContext context, data) {
+Widget mytransactionsListView(BuildContext context, List<Transaction>data) {
   ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
   var size = ScreenUtil();
   return ListView.builder(
@@ -152,21 +154,19 @@ Widget mytransactionsListView(BuildContext context, data) {
       itemBuilder: (context, index) {
         return transactionCard(
             context,
-            data[index].trxDate,
-            data[index].trxAmt,
-            data[index].newBalance,
-            data[index].trxNo,
-            data[index].trxType,
+            data[index]
 
         );
       });
 }
 
-Widget transactionCard(BuildContext context, String date, String amount,
-    String newbalance, String number, String type
+Widget transactionCard(BuildContext context, Transaction dataindex
     ) {
   ScreenUtil.init(context, width: 720, height: 1280, allowFontScaling: false);
   var size = ScreenUtil();
+
+  DateFormat dateFormat=DateFormat.yMd().add_jm();
+  var parsedDate= dataindex.trxDate;
   return InkWell(
     onTap: () {
 
@@ -188,14 +188,14 @@ Widget transactionCard(BuildContext context, String date, String amount,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Ksh. $amount',
+                        'Ksh. ${dataindex.trxAmt}',
                         style: TextStyle(
                             color: Colors.black87,
                             fontSize: size.setSp(26),
                             fontWeight: FontWeight.w700),
                       ),
                       Text(
-                        '$date',
+                        '${ parsedDate}',
                         style: TextStyle(
                             color: defaultBlue,
                             fontSize: size.setSp(22),
@@ -210,7 +210,14 @@ Widget transactionCard(BuildContext context, String date, String amount,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        '$type',
+                        '${dataindex.trxType}',
+                        style: TextStyle(
+                            color: Colors.grey[700],
+                            fontSize: size.setSp(24),
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        '# ${dataindex.trxNo}',
                         style: TextStyle(
                             color: Colors.grey[700],
                             fontSize: size.setSp(24),
@@ -225,13 +232,7 @@ Widget transactionCard(BuildContext context, String date, String amount,
                       // ),
                     ],
                   )),
-              Expanded(
-                flex: 1,
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  size: size.setWidth(30),
-                ),
-              )
+
             ],
           ),
           Divider()

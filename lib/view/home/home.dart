@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.fromLTRB(
                           3 * widthm, 3 * widthm, 1 * widthm, 1 * widthm),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
                             flex: 2,
@@ -128,14 +128,11 @@ class _HomeState extends State<Home> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/referral.png",
-                                  color: Colors.red[900],
-                                  height: 8 * heightm,
-                                ),
-                              ],
+                            child: Icon(
+                              Icons.group,
+                              size:16*widthm,
+
+                              color: Colors.red[800],
                             ),
                           ),
                         ],
@@ -154,11 +151,12 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.fromLTRB(
                           3 * widthm, 3 * widthm, 1 * widthm, 1 * widthm),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
                             flex: 2,
                             child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,14 +186,11 @@ class _HomeState extends State<Home> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/account-balance.png",
-                                  color: Colors.green,
-                                  height: 6 * heightm,
-                                ),
-                              ],
+                            child: Icon(
+                              Icons.monetization_on,
+                              size:16*widthm,
+
+                              color: Colors.green,
                             ),
                           ),
                         ],
@@ -214,7 +209,7 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.fromLTRB(
                           3 * widthm, 3 * widthm, 1 * widthm, 1 * widthm),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
                             flex: 2,
@@ -248,14 +243,11 @@ class _HomeState extends State<Home> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/timetable.png",
-                                  color: Colors.black,
-                                  height: 6 * heightm,
-                                ),
-                              ],
+                            child: Icon(
+                              Icons.calendar_today,
+                              size:14*widthm,
+
+                              color: defaultBlue,
                             ),
                           ),
                         ],
@@ -274,7 +266,7 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.fromLTRB(
                           3 * widthm, 3 * widthm, 1 * widthm, 1 * widthm),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
                             flex: 2,
@@ -308,14 +300,11 @@ class _HomeState extends State<Home> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/dollar-currency-symbol.png",
-                                  color: defaultBlue,
-                                  height: 6 * heightm,
-                                ),
-                              ],
+                            child: Icon(
+                              Icons.attach_money,
+                              size:16*widthm,
+
+                              color: Colors.brown,
                             ),
                           ),
                         ],
@@ -334,7 +323,7 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.fromLTRB(
                           3 * widthm, 3 * widthm, 1 * widthm, 1 * widthm),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
                             flex: 2,
@@ -368,14 +357,11 @@ class _HomeState extends State<Home> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/dollar-currency-symbol.png",
-                                  color: Colors.black,
-                                  height: 6 * heightm,
-                                ),
-                              ],
+                            child: Icon(
+                              Icons.wb_incandescent,
+                              size:14*widthm,
+
+                              color: Colors.deepOrangeAccent,
                             ),
                           ),
                         ],
